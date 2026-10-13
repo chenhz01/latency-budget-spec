@@ -2,6 +2,8 @@
 
 A stdlib-only validator for layered latency budgets: declares a budget tree (gateway -> service -> db/cache/external), checks children sums fit parent budgets with headroom warnings, and audits p99 attribution records against declared budgets. If you own an SLO that keeps getting blown by an unnamed layer, use this; otherwise skip it.
 
+<p align="center"><img src="docs/demo.gif" alt="demo" width="720"></p>
+
 ## Problem
 
 "A target of 300 ms" means nothing until someone asks: how much does the gateway get, how much the service, how much the database? Budgets declared only at the top silently oversubscribe — children sum to 120% of the parent — and when p99 regresses, nobody can say which layer spent the money. Teams need a checked-in, mechanical budget contract.
